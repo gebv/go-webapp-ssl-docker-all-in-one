@@ -27,7 +27,7 @@ services:
 
   webserver80:
     image: nginx:mainline-alpine
-    container_name: webserver
+    container_name: webserver80
     restart: unless-stopped
     env_file: .env
     ports:
@@ -47,7 +47,7 @@ services:
 
   webserver443:
     image: nginx:mainline-alpine
-    container_name: webserver
+    container_name: webserver443
     restart: unless-stopped
     env_file: .env
     ports:
