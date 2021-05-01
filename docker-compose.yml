@@ -23,7 +23,7 @@ services:
       - certbot-var:/var/lib/letsencrypt
     depends_on:
       - webserver80
-    command: certonly --webroot --webroot-path=/var/www/html --email $LETSENCRYPT_EMAIL --agree-tos --no-eff-email --staging -d $DOMAIN
+    command: certonly --webroot --webroot-path=/var/www/html --email $LETSENCRYPT_EMAIL --agree-tos --no-eff-email -d $DOMAIN
 
   webserver80:
     image: nginx:mainline-alpine
@@ -34,7 +34,7 @@ services:
       - "80:80"
     volumes:
       - certbot-webroot:/var/www/html
-      - ./nginx.conf.templae:/etc/nginx/conf.d/webserver80
+      - ./webserver80:/etc/nginx/conf.d/webserver80
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
     command:
