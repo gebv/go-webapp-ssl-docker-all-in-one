@@ -23,16 +23,17 @@ services:
       - certbot-var:/var/lib/letsencrypt
     depends_on:
       - webserver
-    command: certonly \
-        --webroot --webroot-path=/var/www/html \
-        --text \
-        --email $LETSENCRYPT_EMAIL \
-        --agree-tos \
-        --no-eff-email \
-        --preferred-challenges http-01 \
-        --server https://acme-v02.api.letsencrypt.org/directory \
-        --renew-by-default \
-        -d $DOMAIN
+    command: |
+        certonly \
+            --webroot --webroot-path=/var/www/html \
+            --text \
+            --email $LETSENCRYPT_EMAIL \
+            --agree-tos \
+            --no-eff-email \
+            --preferred-challenges http-01 \
+            --server https://acme-v02.api.letsencrypt.org/directory \
+            --renew-by-default \
+            -d $DOMAIN
 
   webserver:
     image: nginx:mainline-alpine

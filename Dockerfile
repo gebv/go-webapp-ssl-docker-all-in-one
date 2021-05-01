@@ -1,8 +1,8 @@
 FROM golang:1.14 as webapp-builder
     WORKDIR /go/src/github.com/gebv/go-webapp-ssl-docker-all-in-one
-    COPY go.mod .
-    COPY go.sum .
-    RUN go mod download
+    # COPY go.mod .
+    # COPY go.sum .
+    # RUN go mod download
     COPY . .
     RUN go build -v -o /webapp ./main.go
 
